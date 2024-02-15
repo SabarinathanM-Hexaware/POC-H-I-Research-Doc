@@ -28,26 +28,24 @@ para_mapping = {
     "storage_and_handling_of_drug": 114
 }
 
-f = open("summary.json")
-summary: dict[str, str] = json.loads(f.read())
+def create_summary_document(summary: dict[str, str]) -> None:
 
-template_file = Path("Research_Doc_Template.docx")
+    # Creating a new Summary document from template
+    template_file = Path("Research_Doc_Template.docx")
+    current_epoch_time = int(time.time())
+    target_file_path = Path(f"output/Research_Doc_{current_epoch_time}.docx")
+    shutil.copyfile(template_file, target_file_path)
 
-current_epoch_time = int(time.time())
-target_file_path = Path(f"Research_Doc_{current_epoch_time}.docx")
+    # Adding the summary text to the summary document
+    doc = Document(target_file_path)
+    paras = doc.paragraphs
+    for [key, index] in para_mapping.items():
+        if key in summary:
+            paras[index].runs[0].text = summary[key].capitalize()
+        else:
+            paras[index].runs[0].text = ""
 
-shutil.copyfile(template_file, target_file_path)
-
-doc = Document(target_file_path)
-paras = doc.paragraphs
-
-for [key, index] in para_mapping.items():
-    if key in summary:
-        paras[index].runs[0].text = summary[key]
-    else:
-        paras[index].runs[0].text = ""
-
-doc.save(target_file_path)
+    doc.save(target_file_path)
 
 
 

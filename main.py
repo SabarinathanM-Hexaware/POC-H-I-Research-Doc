@@ -3,6 +3,9 @@
 
 
 from utils import load_html, transform_html, split_documents_into_chunks, query, merge_documents
+from doc import create_summary_document
+from langchain.chains.base import Chain
+from typing import List
 import json
 
 urls = [
@@ -75,7 +78,7 @@ def write_to_file(content, file_name):
 documents = load_html(urls)
 transformed_docs = transform_html(documents, urls)
 
-responses = []
+responses: List[Chain] = []
 for doc in transformed_docs:
     print(f"Processing {doc.metadata}")
     splitted_chunks = split_documents_into_chunks([doc])
@@ -89,6 +92,8 @@ for resp in responses:
         if key not in summary:
             summary[key] = value
 
-write_to_file(json.dumps(summary), "summary.json")
+# write_to_file(json.dumps(summary), "summary.json")
+print("Creating Summary Document")
+create_summary_document(summary)
 
 
