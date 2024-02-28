@@ -7,7 +7,7 @@ from typing import List
 
 para_mapping = {
     "summary": 76,
-    "background_of_drug": 78,
+    "background": 78,
     "molecular_structure": 80,
     "molecular_weight": 82,
     "molecular_formula_of_drug": 84,
@@ -22,10 +22,10 @@ para_mapping = {
     "dose_and_administration": 102,
     "contraindiacations_of_drug": 104,
     "warnings_and_precautions": 106,
-    "clinical_pharmacology": 108,
+    "clinical_pharmacology_of_drug": 108,
     "non_clinicol_toxicology": 110,
-    "clinical_studies_of_drug": 112,
-    "storage_and_handling_of_drug": 114,
+    "clinical_studies": 112,
+    "storage_and_handling": 114,
     "summary_of_related_research_articles": 157,
     "main_outcomes_and_measures_of_related_articles": 159,
     "study_design_for_background": 163,
