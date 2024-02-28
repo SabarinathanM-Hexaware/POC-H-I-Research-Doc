@@ -25,11 +25,14 @@ para_mapping = {
     "clinical_pharmacology": 108,
     "non_clinicol_toxicology": 110,
     "clinical_studies_of_drug": 112,
-    "storage_and_handling_of_drug": 114
+    "storage_and_handling_of_drug": 114,
+    "summary_of_related_research_articles": 157,
+    "main_outcomes_and_measures_of_related_articles": 159,
+    "study_design_for_background": 163,
 }
 
-def create_summary_document(summary: dict[str, str]) -> None:
 
+def create_summary_document(summary: dict[str, str]) -> None:
     # Creating a new Summary document from template
     template_file = Path("Research_Doc_Template.docx")
     current_epoch_time = int(time.time())
@@ -46,6 +49,3 @@ def create_summary_document(summary: dict[str, str]) -> None:
             paras[index].runs[0].text = ""
 
     doc.save(target_file_path)
-
-
-
