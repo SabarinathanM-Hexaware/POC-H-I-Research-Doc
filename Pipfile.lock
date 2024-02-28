@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cb2def7a68eedc9b0598f6c6334360a2537db69b4b513e1190377e11990ce8c0"
+            "sha256": "ce8c2e95b2bbb1d278498ad110513e5991df748b6b5238421584ba4d26f3dfbf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -355,12 +355,12 @@
         },
         "chromadb": {
             "hashes": [
-                "sha256:3d3c2ffb4ff560721e3daf8c1a3729fd149c551525b6f75543eddb81a4f29e16",
-                "sha256:54d9a770640704c6cedc15317faab9fd45beb9833e7484c00037e7a8801a349f"
+                "sha256:3a08e237a4ad28b5d176685bd22429a03717fe09d35022fb230d516108da01da",
+                "sha256:a5c80b4e4ad9b236ed2d4899a5b9e8002b489293f2881cb2cadab5b199ee1c72"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==0.4.23"
+            "version": "==0.4.24"
         },
         "click": {
             "hashes": [
@@ -678,6 +678,14 @@
             "markers": "python_version >= '3.7'",
             "version": "==0.14.0"
         },
+        "html2text": {
+            "hashes": [
+                "sha256:05f8e367d15aaabc96415376776cdd11afd5127a77fce6e36afc60c563ca2c32"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==2024.2.26"
+        },
         "httpcore": {
             "hashes": [
                 "sha256:096cc05bca73b8e459a1fc3dcf585148f63e534eae4339559c9b8a8d6399acc7",
@@ -739,11 +747,11 @@
         },
         "huggingface-hub": {
             "hashes": [
-                "sha256:94e7f8e074475fbc67d6a71957b678e1b4a74ff1b64a644fd6cbb83da962d05d",
-                "sha256:d988ae4f00d3e307b0c80c6a05ca6dbb7edba8bba3079f74cda7d9c2e562a7b6"
+                "sha256:b40dd1dc5c589b7c73178f5f17996bac516524dce83f16d5219a83e33a565712",
+                "sha256:c458ae6b3e8e197472c4ef01d8cc5f8b3ddb70e9288afcd494753d832dac3a70"
             ],
             "markers": "python_full_version >= '3.8.0'",
-            "version": "==0.20.3"
+            "version": "==0.21.1"
         },
         "humanfriendly": {
             "hashes": [
