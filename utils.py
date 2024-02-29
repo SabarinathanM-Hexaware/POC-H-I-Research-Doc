@@ -1,4 +1,5 @@
 from langchain_community.document_transformers import BeautifulSoupTransformer
+from langchain_community.document_transformers import Html2TextTransformer
 from langchain_community.document_loaders import AsyncChromiumLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import create_extraction_chain
@@ -13,6 +14,7 @@ UNWANTED_URL_TAGS = ["script", "style"]
 TOKENIZER_MODEL_TYPE = "gpt-35-turbo"
 MODEL_NAME = "base-gpt35-turbo-16"
 CHUNK_SIZE = 13000
+PROMPT = "You are an web scraping tool that is extracting information from the web without modifying the content "
 
 
 def load_html(urls: list[dict]) -> List[Document]:
@@ -26,16 +28,21 @@ def transform_html(html: List[Document], urls: list[dict]) -> Sequence[Document]
     docs_transformed = []
 
     bs_transformer = BeautifulSoupTransformer()
+    html_transformer = Html2TextTransformer()
 
     for i in range(len(html)):
+        # docs_transformed.extend(
+        #     bs_transformer.transform_documents(
+        #         [html[i]],
+        #         tags_to_extract=urls[i]["tags_to_extract"],
+        #         unwanted_tags=[*UNWANTED_URL_TAGS, *urls[i]["unwanted_tags"]],
+        #         remove_lines=True,
+        #     )
+        # )
         docs_transformed.extend(
-            bs_transformer.transform_documents(
-                [html[i]],
-                tags_to_extract=urls[i]["tags_to_extract"],
-                unwanted_tags=[*UNWANTED_URL_TAGS, *urls[i]["unwanted_tags"]],
-                remove_lines=True,
-            )
-        )
+            html_transformer.transform_documents(
+                [html[i]]
+        ))
     
     return docs_transformed
 

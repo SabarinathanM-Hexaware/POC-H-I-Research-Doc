@@ -6,13 +6,13 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.vectorstores.chroma import Chroma
 
-azure_endpoint = os.environ["OPENAI_ENDPOINT"]
+azure_endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
 deployment = os.environ["OPENAI_EMBEDDING_DEPLOYMENT"]
 model = os.environ["OPENAI_EMBEDDING_MODEL"]
 persist_directory = os.environ["CHROMA_PERSIST_DIRECTORY"]
 model = os.environ["OPENAI_MODEL"]
 azure_deployment = os.environ["OPENAI_DEPLOYMENT"]
-azure_endpoint = os.environ["OPENAI_ENDPOINT"]
+azure_endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
 
 llm = AzureChatOpenAI(
     model=model,
