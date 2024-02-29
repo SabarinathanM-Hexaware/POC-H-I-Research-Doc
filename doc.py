@@ -1,9 +1,7 @@
-import json
 import time
 import shutil
 from pathlib import Path
 from docx import Document
-from typing import List
 
 para_mapping = {
     "summary": 76,

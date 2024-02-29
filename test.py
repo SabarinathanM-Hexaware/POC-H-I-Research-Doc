@@ -13,9 +13,14 @@ section5_schema = {
         "study_design_for_background",
     ],
 }
-summarized_content = summarize(
-    "Summary of Background Research for Vasopressin in Renal Failure"
-)
 
-res = query(summarized_content, section5_schema)
-print(summarized_content, res)
+fields = section5_schema["required"]
+
+summary = dict()
+
+for field in fields:
+    summarized_content = summarize("Acute Renal Failure: " + field)
+    summary[field] = summarized_content
+
+
+print(summary)

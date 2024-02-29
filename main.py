@@ -45,6 +45,36 @@ section5_schema = {
     ],
 }
 
+five_one = """
+For the subject you have to generate a summary of the related articles.
+I want you to give me 3 paragraphs.
+Please include one paragraph about the disease, it's causes, symptoms, 
+risk, prevention and medical procedures.
+Please include one paragraph about the drug that is administered, 
+it's efficacy, the side effects if any, and any other related information.
+Please include one paragraph about any other clinical findings regarding the 
+disease and the drug
+"""
+
+five_two = """
+For the subject you have to find out the main outcomes and measures from the 
+clinical and drug trials. What is the severity of the disease, how do patients 
+cope up with it, what are the mortality rates and the clinical findings. Also,
+What are the outcomes of the drug trials, how effective  the drug is and is it 
+helping in curing the disease.
+Please generate as one single paragraphs, not in bullet points.
+"""
+
+five_four = """
+For the subject you have to find out the ways with which studies can be undergone
+for the disease with the drug to do more findings regarding the disease and the drug.
+"""
+
+sec5 = {
+    "summary_of_related_research_articles": five_one,
+    "main_outcomes_and_measures_of_related_articles": five_two,
+    "study_design_for_background": five_four,
+}
 
 schema = {
     "properties": {
@@ -109,11 +139,17 @@ for doc in transformed_docs:
     resp = query(splitted_chunks[0].page_content, schema)
     responses.append(resp)
 
-summarized_content = summarize("Summary of Acute Renal Failure and the related drugs")
+section5_data = dict()
 
-res = query(summarized_content, section5_schema)
+for field, prompt in sec5.items():
+    summarized_content = summarize("Acute Renal Failure: " + field, prompt)
+    section5_data[field] = summarized_content
 
-responses.append(res)
+# summarized_content = summarize("Summary of Acute Renal Failure and the related drugs")
+
+# res = query(summarized_content, section5_schema)
+
+responses.append(section5_data)
 
 summary = dict()
 
